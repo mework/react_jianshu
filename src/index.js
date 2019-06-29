@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './style.js';
+import { GlobalStyle } from './style.js';
+import Iconfont from './static/iconfont/iconfont';
+
+const APP = (
+  <div>
+    <Iconfont/>
+    <GlobalStyle />
+    <App />
+  </div>
+);
 
 ReactDOM.render(
-  <App />,
+  APP,
   document.getElementById('root')
 );
