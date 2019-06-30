@@ -1,3 +1,9 @@
+/**
+ * @file 使用 styled-components 创建的头部样式
+ * @author 残梦
+ * @createDate 2019-06-30
+ */
+
 import styled from 'styled-components';
 import logo from '../../static/logo.png';
 
@@ -56,7 +62,7 @@ export const NavSearchWrapper = styled.div`
 	position: relative;
 	float: left;
 
-	.iconfont {
+	.glass-icon {
 		position: absolute;
 		right: 5px;
 		bottom: 4px;
@@ -71,7 +77,57 @@ export const NavSearchWrapper = styled.div`
 			color: #fff;
 		}
 	}
-`
+`;
+
+export const SearchInfo = styled.div`
+	position: absolute;
+	left: 0;
+	top: 56px;
+	display: none;
+	width: 250px;
+	padding: 0 20px 20px;
+	box-shadow: 0 0 8px rgba(0,0,0,.2);
+
+	&.show {
+		display: block;
+	}
+`;
+
+export const SearchInfoTitle = styled.div`
+	margin-top: 20px;
+	margin-bottom: 15px;
+	line-height: 20px;
+	font-size: 14px;
+	color: #969696;
+`;
+
+export const SearchInfoSwitch = styled.div`
+	cursor: pointer;
+	float: right;
+	font-size: 13px;
+
+	.refresh {
+		vertical-align: bottom;
+		margin-right: 2px;
+	}
+`;
+
+export const SearchKeyList = styled.ul`
+`;
+
+export const SearchKeyItem = styled.li`
+	margin-right: 10px;
+	display: inline-block;
+	line-height: 28px;
+	>a {
+		cursor: pointer;
+		padding: 2px 6px;
+		font-size: 12px;
+		color: #787878;
+		border: 1px solid #ddd;
+		border-radius: 3px;
+	}
+`;
 
 export const NavSearch = styled.input.attrs({
 	placeholder: '搜索',
@@ -119,5 +175,9 @@ export const Button = styled.div`
 	&.writting {
 		color: #fff;
 		background-color: #ec6149;
+	}
+
+	.pen-icon {
+		margin-right: 7px;
 	}
 `

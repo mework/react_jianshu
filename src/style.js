@@ -1,3 +1,9 @@
+/**
+ * @file 使用 styled-components 创建的全局样式
+ * @author 残梦
+ * @createDate 2019-06-30
+ */
+
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
