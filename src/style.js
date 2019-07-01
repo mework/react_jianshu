@@ -58,4 +58,7 @@ export const GlobalStyle = createGlobalStyle`
 		outline: none;
 		border: none;
 	}
+	img {
+		vertical-align: middle;
+	}
 `;

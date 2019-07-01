@@ -21,7 +21,7 @@ export const HomeLeft = styled.div`
 
 export const HomeRight = styled.div`
 	float: right;
-	width: 240px;
+	width: 280px;
 `;
 
 export const ArticleWrapper = styled.ul`
@@ -35,6 +35,7 @@ export const ArticleItem = styled.li`
 	border-bottom: 1px solid #f0f0f0;
 	
 	.article-img {
+		cursor: pointer;
 		float: right;
 		width: 150px;
 		height: 100px;
@@ -46,9 +47,14 @@ export const ArticleItem = styled.li`
 `;
 
 export const ArticleTitle = styled.p`
+	cursor: pointer;
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 27px;
+
+	&:hover {
+		text-decoration: underline;
+	}
 `
 
 export const ArticleSpec = styled.p`
@@ -77,4 +83,48 @@ export const ArticleInfoItem = styled.span`
 		font-size: 12px;
 		margin-right: 4px;
 	}
+`;
+
+export const RecommendWrapper = styled.ul`
+`;
+
+export const RecommendItem = styled.li`
+	cursor: pointer;
+	margin-bottom: 6px;
+	height: 50px;
+	border-radius: 4px;
+	background-image: url(${props => (props.imgUrl)});
+	background-size: contain;
+`
+
+export const DownloadWrapper = styled.div`
+	cursor: pointer;
+	margin-top: 12px;
+	padding: 10px 22px;
+	width: 100%;
+	border: 1px solid #f0f0f0;
+	border-radius: 6px;
+	background-color: #fff;
+
+	.download-qrcode {
+		width: 60px;
+		height: 60px;
+		opacity: .85;
+	}
+
+	.download-content {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 12px;
+	}
+`;
+
+export const DownloadTitle = styled.p`
+	font-size: 15px;
+`;
+
+export const DownloadSpec = styled.p`
+	margin-top: 8px;
+	font-size: 13px;
+	color: #999;
 `;
