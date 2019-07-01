@@ -26,6 +26,9 @@ import { actionCreators } from './store';
 import { connect } from 'react-redux';
 import { getIn } from 'immutable';
 
+/**
+ * 搜索详细视图
+ */
 const SearchInfoView = (props) => {
 	const {
 		search_input_focused,
@@ -75,6 +78,9 @@ const SearchInfoView = (props) => {
 	);
 }
 
+/**
+ * 添加部分视图
+ */
 const AdditionView = () => {
 	return (
 		<Addition>
@@ -100,7 +106,6 @@ const Header = (props) => {
 		searchInfoMouseLeave,
 		changeSearchInfoPage,
 	} = props;
-
 
 
 	return (
@@ -143,7 +148,8 @@ const Header = (props) => {
 	)
 }
 
-const mapStateToProps = (state) => {
+
+const mapState = (state) => {
 	return {
 		search_input_focused: getIn(state, ['header', 'search_input_focused']),
 		search_key_list: getIn(state, ['header', 'search_key_list']),
@@ -153,7 +159,8 @@ const mapStateToProps = (state) => {
 	}
 };
 
-const mapDispatchToProps = (dispatch) => {
+
+const mapDispatch = (dispatch) => {
 	return {
 		/**
 		 * 搜索框聚焦事件
@@ -198,4 +205,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapState, mapDispatch)(Header);

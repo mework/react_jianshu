@@ -9,16 +9,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Iconfont from './static/iconfont/iconfont';
 import { GlobalStyle } from './style.js';
-import { Provider } from 'react-redux';
-import store from './store';
 import './pluginsConfig';
 
 const APP = (
-  <Provider store={store}>
+  <div>
     <Iconfont/>
     <GlobalStyle />
     <App />
-  </Provider>
+  </div>
 );
 
 ReactDOM.render(

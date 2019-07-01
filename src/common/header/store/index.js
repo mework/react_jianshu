@@ -1,5 +1,5 @@
 /**
- * @file 头部 store 相关数据入口
+ * @file 头部 store 相关数据出口
  * @author 残梦
  * @createDate 2019-06-30
  */

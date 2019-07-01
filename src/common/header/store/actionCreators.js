@@ -1,5 +1,5 @@
 /**
- * @file action 构造器
+ * @file 头部 action 构造器
  * @author 残梦
  * @createDate 2019-06-30
  */
