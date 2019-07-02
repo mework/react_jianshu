@@ -5,14 +5,13 @@ import {
 	RecommendWrapper,
 	RecommendItem,
 	DownloadWrapper,
-	DownloadQrcode,
 	DownloadTitle,
 	DownloadSpec,
+	DownloadHover,
 } from '../style';
 
 const Recommend = (props) => {
 	const { recommend_list } = props;
-	console.log(recommend_list);
 
 	return (
 		<RecommendWrapper>
@@ -23,7 +22,9 @@ const Recommend = (props) => {
 				))
 			}
 			<DownloadWrapper>
-				<img className="download-qrcode" alt="" src="http://cdn2.jianshu.io/assets/web/download-index-side-qrcode-cb13fc9106a478795f8d10f9f632fccf.png" />
+				<DownloadHover className="hover-style"/>
+
+				<img className="download-qrcode" alt="" src="/static/qrcode/1.png" />
 
 				<div className="download-content">
 					<DownloadTitle>下载简书手机App</DownloadTitle>

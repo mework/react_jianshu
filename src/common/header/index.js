@@ -67,7 +67,7 @@ const SearchInfoView = (props) => {
 								<SearchInfoSwitch
 					onClick={() => { changeSearchInfoPage(search_info_current_page, search_info_total_page) }}
 				>
-					<i className="iconfont refresh">&#xe610;</i>
+					<i className="iconfont refresh-icon">&#xe610;</i>
 					换一批
 								</SearchInfoSwitch>
 			</SearchInfoTitle>

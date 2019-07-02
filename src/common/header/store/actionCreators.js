@@ -36,7 +36,6 @@ export const searchInfoMouseLeave = () => ({
 });
 
 export const getSearchKeyList = () => (dispatch) => {
-	console.log(11);
 	// 搜索详细页容量
 	const pageSize = 10;
 	axios.get('/api/search_list.json').then(res => {

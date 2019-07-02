@@ -1,0 +1,117 @@
+{
+	"status": "OK",
+	"dataList": {
+		"article_list": [
+			{
+				"title": "男人害怕失去你，才会这么“折磨”你",
+				"img_url": "/static/articleList/1.png",
+				"spec": "爱情是很神奇的，它能让男人和女人成为最亲密的恋人，也能彻底改变一个人。 单身的时候，都认为自己是最优秀的，不比任何人差，对另一半的要求是很高的。...",
+				"score": 4.5,
+				"author": "爱情摇篮",
+				"comment": 4,
+				"loveNum": 27
+			},
+			{
+				"title": "深入理解 Java 反射和动态代理",
+				"img_url": "/static/articleList/2.png",
+				"spec": "简介 什么是反射 反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类...",
+				"score": 0.7,
+				"author": "java高并发",
+				"comment": 2,
+				"loveNum": 193
+			},
+			{
+				"title": "高情商的27个小细节，你占了几个？",
+				"img_url": "/static/articleList/3.png",
+				"spec": "1、把自己要说的“不对”统统改成了“对”——不会直接否定对方，而是先肯定对方再提出自己的见解。 2、说谢谢的时侯，常加上“你”，或者加上对方的名...",
+				"score": 73.2,
+				"author": "_唯愿",
+				"comment": 56,
+				"loveNum": 1726
+			},
+			{
+				"title": "男人害怕失去你，才会这么“折磨”你",
+				"img_url": "/static/articleList/1.png",
+				"spec": "爱情是很神奇的，它能让男人和女人成为最亲密的恋人，也能彻底改变一个人。 单身的时候，都认为自己是最优秀的，不比任何人差，对另一半的要求是很高的。...",
+				"score": 4.5,
+				"author": "爱情摇篮",
+				"comment": 4,
+				"loveNum": 27
+			},
+			{
+				"title": "深入理解 Java 反射和动态代理",
+				"img_url": "/static/articleList/2.png",
+				"spec": "简介 什么是反射 反射(Reflection)是 Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类...",
+				"score": 0.7,
+				"author": "java高并发",
+				"comment": 2,
+				"loveNum": 193
+			},
+			{
+				"title": "高情商的27个小细节，你占了几个？",
+				"img_url": "/static/articleList/3.png",
+				"spec": "1、把自己要说的“不对”统统改成了“对”——不会直接否定对方，而是先肯定对方再提出自己的见解。 2、说谢谢的时侯，常加上“你”，或者加上对方的名...",
+				"score": 73.2,
+				"author": "_唯愿",
+				"comment": 56,
+				"loveNum": 1726
+			}
+		],
+		"recommend_list": [
+			{
+				"id": 1,
+				"img_url": "/static/recommend/1.png"
+			},
+			{
+				"id": 2,
+				"img_url": "/static/recommend/2.png"
+			},
+			{
+				"id": 3,
+				"img_url": "/static/recommend/3.png"
+			},
+			{
+				"id": 4,
+				"img_url": "/static/recommend/4.png"
+			}
+		],
+		"writer_list": [
+			{
+				"id": 1,
+				"author": "残梦",
+				"img_url": "/static/writer/1.png",
+				"word_num": "249k",
+				"like_num": "599k"
+				
+			},
+			{
+				"id": 2,
+				"author": "老北京",
+				"img_url": "/static/writer/2.png",
+				"word_num": "230k",
+				"like_num": "458k"
+				
+			},
+			{
+				"id": 3,
+				"author": "老上海",
+				"img_url": "/static/writer/3.png",
+				"word_num": "130k",
+				"like_num": "65k"
+			},{
+				"id": 4,
+				"author": "老广州",
+				"img_url": "/static/writer/4.png",
+				"word_num": "119k",
+				"like_num": "102k"
+			},
+			{
+				"id": 5,
+				"author": "老深圳",
+				"img_url": "/static/writer/5.png",
+				"word_num": "98k",
+				"like_num": "145k"
+			}
+		]
+	}
+}

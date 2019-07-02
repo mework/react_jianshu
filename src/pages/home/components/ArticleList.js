@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getIn } from 'immutable';
+import { actionCreators } from '../store';
 
 import {
 	ArticleWrapper,
@@ -9,16 +10,17 @@ import {
 	ArticleSpec,
 	ArticleInfo,
 	ArticleInfoItem,
+	ArticleMore,
 } from '../style';
 
 const ArticleList = (props) => {
-	const { article_list } = props;
+	const { article_list, article_page, showMoreArticle } = props;
 
 	return (
 		<ArticleWrapper>
 			{
-				article_list.map((item) => (
-					<ArticleItem key={item.get('id')}>
+				article_list.map((item, index) => (
+					<ArticleItem key={index}>
 						<img className="article-img" alt="" src={item.get('img_url')} />
 						<div className="article-content">
 							<ArticleTitle>{item.get('title')}</ArticleTitle>
@@ -44,12 +46,25 @@ const ArticleList = (props) => {
 					</ArticleItem>
 				))
 			}
+
+			<ArticleMore
+				onClick={() => showMoreArticle(article_page)}
+			>
+				阅读更多
+			</ArticleMore>
 		</ArticleWrapper>
 	);
 }
 
 const mapState = (state) => ({
 	article_list: getIn(state, ['home', 'article_list']),
+	article_page: getIn(state, ['home', 'article_page']),
 })
 
-export default connect(mapState, null)(ArticleList);
+const mapDispatch = (dispatch) => ({
+	showMoreArticle(article_page) {
+		dispatch(actionCreators.getMoreArticle(article_page + 1))
+	}
+})
+
+export default connect(mapState, mapDispatch)(ArticleList);

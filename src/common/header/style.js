@@ -107,7 +107,7 @@ export const SearchInfoSwitch = styled.div`
 	float: right;
 	font-size: 13px;
 
-	.refresh {
+	.refresh-icon {
 		vertical-align: bottom;
 		margin-right: 2px;
 	}

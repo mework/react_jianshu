@@ -4,65 +4,43 @@
  * @createDate 2019-06-30
  */
 
-import { fromJS } from 'immutable';
-// import * as actionTypes from './actionTypes';
+import { fromJS, merge } from 'immutable';
+import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
-	article_list: [			// 首页文章列表
-		{
-			id: 1,
-			title: '男人害怕失去你，才会这么“折磨”你',
-			img_url: 'http://upload-images.jianshu.io/upload_images/16235793-5c2c92db1b14e092.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-			spec: '爱情是很神奇的，它能让男人和女人成为最亲密的恋人，也能彻底改变一个人。 单身的时候，都认为自己是最优秀的，不比任何人差，对另一半的要求是很高的。...',
-			score: 4.5,
-			author: '爱情摇篮',
-			comment: 4,
-			loveNum: 27,
-		},
-		{
-			id: 2,
-			title: '男人害怕失去你，才会这么“折磨”你',
-			img_url: 'http://upload-images.jianshu.io/upload_images/16235793-5c2c92db1b14e092.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-			spec: '爱情是很神奇的，它能让男人和女人成为最亲密的恋人，也能彻底改变一个人。 单身的时候，都认为自己是最优秀的，不比任何人差，对另一半的要求是很高的。...',
-			score: 4.5,
-			author: '爱情摇篮',
-			comment: 4,
-			loveNum: 27,
-		},
-		{
-			id: 3,
-			title: '男人害怕失去你，才会这么“折磨”你',
-			img_url: 'http://upload-images.jianshu.io/upload_images/16235793-5c2c92db1b14e092.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
-			spec: '爱情是很神奇的，它能让男人和女人成为最亲密的恋人，也能彻底改变一个人。 单身的时候，都认为自己是最优秀的，不比任何人差，对另一半的要求是很高的。...',
-			score: 4.5,
-			author: '爱情摇篮',
-			comment: 4,
-			loveNum: 27,
-		},
-	],
+	article_list: [],		// 文章列表
+	article_page: 1,		// 文章页数
 
-	recommend_list: [		// 推荐列表
-		{
-			id: 1,
-			img_url: 'http://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png'
-		},
-		{
-			id: 2,
-			img_url: 'http://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png'
-		},
-		{
-			id: 3,
-			img_url: 'http://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png'
-		},
-		{
-			id: 4,
-			img_url: 'http://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png'
-		},
-	],
+	recommend_list: [],		// 推荐列表
+
+	writer_list: [],		// 作者列表
+
+	show_back_top: false,	// 是否显示回到顶部
 });
 
 export default (state = defaultState, action) => {
 	switch (action.type) {
+		
+		case actionTypes.SET_INIT_HOME_DATA:
+			return merge(state, {
+				article_list: action.article_list,
+				recommend_list: action.recommend_list,
+				writer_list: action.writer_list,
+			});
+
+		case actionTypes.SET_MORE_ARTICLE:
+			return merge(state, {
+				article_list: state.get('article_list').concat(action.article_list),
+				article_page: action.article_page,
+			});
+
+		case actionTypes.CHANGE_WRITER:
+			const firstItem = state.get('writer_list').get(0);
+			const writer_list = state.get('writer_list').shift().concat([firstItem]);
+			return state.set('writer_list', writer_list);
+		
+		case actionTypes.SHOW_BACK_TOP:
+			return state.set('show_back_top', action.isShow);
 
 		default:
 			return state;

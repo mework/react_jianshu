@@ -4,7 +4,7 @@
  * @createDate 2019-06-30
  */
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -14,7 +14,7 @@ import Home from './pages/home';
 
 
 
-class App extends Component {
+class App extends PureComponent {
 	render() {
 		return (
 			<Provider store={store}>
