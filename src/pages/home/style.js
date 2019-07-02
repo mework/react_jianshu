@@ -196,7 +196,7 @@ export const DownloadWrapper = styled.div`
 
 	&:hover {
 		.hover-style {
-			opacity: 1;
+			display: block;
 		}
 	}
 `;
@@ -212,8 +212,8 @@ export const DownloadSpec = styled.p`
 `;
 
 export const DownloadHover = styled.div`
-	opacity: 0;
-	transition: all .2s;
+	display: none;
+	cursor: default;
 	position: absolute;
 	top: -195px;
 	left: 50%;
