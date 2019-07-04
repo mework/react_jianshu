@@ -24,7 +24,7 @@ class App extends PureComponent {
 					<BrowserRouter>
 						<div>
 							<Header />
-							<Route path="/" exact component={Home} />
+							<Route path={["/", "/index.html"]} exact component={Home} />
 							<Route path="/detail/:id" exact component={Detail} />
 							<Route path="/login" exact component={Login} />
 							<Route path="/writer_article" exact component={WriterArticle} />
