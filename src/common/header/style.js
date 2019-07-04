@@ -5,7 +5,6 @@
  */
 
 import styled from 'styled-components';
-import logo from '../../static/logo.png';
 
 export const HeaderWrapper = styled.div`
 	border: 1px solid #f0f0f0;
@@ -18,15 +17,14 @@ export const WidthLimit = styled.div`
 	margin: 0 auto;
 `;
 
-export const Logo = styled.a.attrs({
-	href: '/',
-})`
+export const Logo = styled.span`
+	cursor: pointer;
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100px;
 	height: 56px;
-	background-image: url(${logo});
+	background-image: url('/static/logo/logo.png');
 	background-size: contain;
 `;
 
@@ -39,11 +37,16 @@ export const Nav = styled.div`
 	padding-right: 15px	;
 `;
 
-export const NavItem = styled.a`
+export const NavItem = styled.span`
+	cursor: pointer;
+
 	&.left {
 		float: left;
 		font-size: 17px;
 		color: #333;
+		&:hover {
+			background-color: #f5f5f5;
+		}
 	}
 	&.right {
 		float: right;
@@ -160,6 +163,7 @@ export const Addition = styled.div`
 `
 
 export const Button = styled.div`
+	cursor: pointer;
 	float: right;
 	margin-top: 9px;
 	margin-right: 20px;
@@ -182,3 +186,24 @@ export const Button = styled.div`
 		margin-right: 7px;
 	}
 `
+
+export const Buddha = styled.div`
+	float: right;
+	margin-right: 10px;
+	width: 80px;
+	height: 56px;
+	line-height: 56px;
+	text-align: center;
+
+	&:hover {
+		background-color: #f5f5f5;
+	}
+
+	img {
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: 1px solid #ddd;
+	}
+`;

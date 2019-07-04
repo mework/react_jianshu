@@ -36,8 +36,8 @@ const Recommend = (props) => {
 	);
 }
 
-const mapState = (state) => ({
-	recommend_list: getIn(state, ['home', 'recommend_list']),
+const mapStatus = (status) => ({
+	recommend_list: getIn(status, ['home', 'recommend_list']),
 });
 
-export default connect(mapState, null)(Recommend);
+export default connect(mapStatus, null)(Recommend);

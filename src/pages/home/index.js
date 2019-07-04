@@ -56,8 +56,8 @@ class Home extends PureComponent {
 	}
 }
 
-const mapState = (state) => ({
-	show_back_top: getIn(state, ['home', 'show_back_top']),
+const mapStatus = (status) => ({
+	show_back_top: getIn(status, ['home', 'show_back_top']),
 });
 
 const mapDispatch = (dispatch) => ({
@@ -76,4 +76,4 @@ const mapDispatch = (dispatch) => ({
 	},
 })
 
-export default connect(mapState, mapDispatch)(Home);
+export default connect(mapStatus, mapDispatch)(Home);

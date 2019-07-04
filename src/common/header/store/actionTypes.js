@@ -19,3 +19,4 @@ export const INIT_SEARCH_TOTAL_PAGE = 'header/init_search_total_page';
 
 export const CHANGE_SEARCH_INFO_PAGE = 'header/change_search_info_page';
 
+export const TOGGLE_LOGIN_STATUS = 'header/toggle_login_status';

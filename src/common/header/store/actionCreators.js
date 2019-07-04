@@ -16,6 +16,11 @@ const initSearchKeyList = (data) => ({
 const initSearchTotalPage = (total_page) => ({
 	type: actionTypes.INIT_SEARCH_TOTAL_PAGE,
 	total_page,
+});
+
+const toggleLoginStatus = (login_status) => ({
+	type: actionTypes.TOGGLE_LOGIN_STATUS,
+	login_status,
 })
 
 
@@ -52,3 +57,15 @@ export const changeSearchInfoPage = (current_page) => ({
 	type: actionTypes.CHANGE_SEARCH_INFO_PAGE,
 	current_page
 });
+
+
+export const login = (username, password) => (dispatch) => {
+	console.log(`账号：${username}，密码：${password}`);
+	alert('登录成功！');
+	dispatch(toggleLoginStatus(true))
+};
+
+export const logout = () => (dispatch) => {
+	alert('退出账号成功！');
+	dispatch(toggleLoginStatus(false))
+}

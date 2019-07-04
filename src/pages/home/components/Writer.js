@@ -45,8 +45,8 @@ const Writer = (props) => {
 	);
 }
 
-const mapState = (state) => ({
-	writer_list: getIn(state, ['home', 'writer_list']),
+const mapStatus = (status) => ({
+	writer_list: getIn(status, ['home', 'writer_list']),
 });
 
 const mapDispatch = (dispatch) => ({
@@ -58,4 +58,4 @@ const mapDispatch = (dispatch) => ({
 	}
 })
 
-export default connect(mapState, mapDispatch)(Writer);
+export default connect(mapStatus, mapDispatch)(Writer);

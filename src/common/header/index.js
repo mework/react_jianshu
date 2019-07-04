@@ -20,25 +20,29 @@ import {
 	SearchInfoSwitch,
 	SearchKeyList,
 	SearchKeyItem,
+	Buddha,
 } from './style';
 
+import { Link } from 'react-router-dom';
 import { actionCreators } from './store';
 import { connect } from 'react-redux';
 import { getIn } from 'immutable';
 
-/**
- * 搜索详细视图
- */
-const SearchInfoView = (props) => {
+
+const Header = (props) => {
 	const {
+		login_status,
 		search_input_focused,
-		search_info_mouse_in,
+		search_key_list,
 		search_info_current_page,
 		search_info_total_page,
-		search_key_list,
+		search_info_mouse_in,
+		searchInputFocus,
+		searchInputBlur,
 		searchInfoMouseEnter,
 		searchInfoMouseLeave,
 		changeSearchInfoPage,
+		logout,
 	} = props;
 
 	const _search_key_list = search_key_list.toJS();
@@ -56,67 +60,33 @@ const SearchInfoView = (props) => {
 		}
 	}
 
-	return (
-		<SearchInfo
-			className={search_input_focused || search_info_mouse_in ? 'show' : ''}
-			onMouseEnter={searchInfoMouseEnter}
-			onMouseLeave={searchInfoMouseLeave}
-		>
-			<SearchInfoTitle>
-				热门搜索
-								<SearchInfoSwitch
-					onClick={() => { changeSearchInfoPage(search_info_current_page, search_info_total_page) }}
-				>
-					<i className="iconfont refresh-icon">&#xe610;</i>
-					换一批
-								</SearchInfoSwitch>
-			</SearchInfoTitle>
-			<SearchKeyList>
-				{search_key_html}
-			</SearchKeyList>
-		</SearchInfo>
-	);
-}
-
-/**
- * 添加部分视图
- */
-const AdditionView = () => {
-	return (
-		<Addition>
-			<Button className="writting">
-				<i className="iconfont pen-icon">&#xe678;</i>
-				写文章
-			</Button>
-			<Button className="reg">注册</Button>
-		</Addition>
-	);
-}
-
-const Header = (props) => {
-	const {
-		search_input_focused,
-		search_key_list,
-		search_info_current_page,
-		search_info_total_page,
-		search_info_mouse_in,
-		searchInputFocus,
-		searchInputBlur,
-		searchInfoMouseEnter,
-		searchInfoMouseLeave,
-		changeSearchInfoPage,
-	} = props;
-
 
 	return (
 		<HeaderWrapper>
 			<WidthLimit>
-				<Logo />
+				<Link to="/">
+					<Logo />
+				</Link>
+
 				<Nav>
-					<NavItem className="left active">首页</NavItem>
+					<Link to="/">
+						<NavItem className="left active">首页</NavItem>
+					</Link>
+
 					<NavItem className="left">下载App</NavItem>
 					<NavItem className="right"><i className="iconfont">&#xe636;</i></NavItem>
-					<NavItem className="right">登录</NavItem>
+
+					{
+						!login_status ? 
+							<Link to="/login">
+								<NavItem className="right">登录</NavItem>
+							</Link>
+							:
+							<NavItem
+								onClick={logout}
+								className="right"
+							>退出</NavItem>
+					}
 
 					<NavSearchWrapper>
 						<NavSearch
@@ -128,20 +98,43 @@ const Header = (props) => {
 							className={search_input_focused ? 'focused iconfont glass-icon' : 'iconfont glass-icon'}
 						>&#xe6dd;</i>
 
-						<SearchInfoView
-							search_input_focused={search_input_focused}
-							search_info_mouse_in={search_info_mouse_in}
-							search_info_current_page={search_info_current_page}
-							search_info_total_page={search_info_total_page}
-							search_key_list={search_key_list}
-							searchInfoMouseEnter={searchInfoMouseEnter}
-							searchInfoMouseLeave={searchInfoMouseLeave}
-							changeSearchInfoPage={changeSearchInfoPage}
-						/>
+						<SearchInfo
+							className={search_input_focused || search_info_mouse_in ? 'show' : ''}
+							onMouseEnter={searchInfoMouseEnter}
+							onMouseLeave={searchInfoMouseLeave}
+						>
+							<SearchInfoTitle>
+								热门搜索
+								<SearchInfoSwitch
+									onClick={() => { changeSearchInfoPage(search_info_current_page, search_info_total_page) }}
+								>
+									<i className="iconfont refresh-icon">&#xe610;</i>
+									换一批
+								</SearchInfoSwitch>
+							</SearchInfoTitle>
+							<SearchKeyList>
+								{search_key_html}
+							</SearchKeyList>
+						</SearchInfo>
 
 					</NavSearchWrapper>
 
-					<AdditionView />
+					<Addition>
+						<Link to="/writer_article">
+							<Button className="writting">
+								<i className="iconfont pen-icon">&#xe678;</i>
+								写文章
+							</Button>
+						</Link>
+						{
+							!login_status ? 
+							<Button className="reg">注册</Button>
+							:
+							<Buddha>
+								<img alt="" src="/static/writer/5.png" />
+							</Buddha>
+						}
+					</Addition>
 				</Nav>
 			</WidthLimit>
 		</HeaderWrapper>
@@ -149,13 +142,15 @@ const Header = (props) => {
 }
 
 
-const mapState = (state) => {
+const mapStatus = (status) => {
 	return {
-		search_input_focused: getIn(state, ['header', 'search_input_focused']),
-		search_key_list: getIn(state, ['header', 'search_key_list']),
-		search_info_mouse_in: getIn(state, ['header', 'search_info_mouse_in']),
-		search_info_current_page: getIn(state, ['header', 'search_info_current_page']),
-		search_info_total_page: getIn(state, ['header', 'search_info_total_page']),
+		search_input_focused: getIn(status, ['header', 'search_input_focused']),
+		search_key_list: getIn(status, ['header', 'search_key_list']),
+		search_info_mouse_in: getIn(status, ['header', 'search_info_mouse_in']),
+		search_info_current_page: getIn(status, ['header', 'search_info_current_page']),
+		search_info_total_page: getIn(status, ['header', 'search_info_total_page']),
+
+		login_status: getIn(status, ['header', 'login_status']),
 	}
 };
 
@@ -195,14 +190,21 @@ const mapDispatch = (dispatch) => {
 		 * 更变搜索详细页码
 		 */
 		changeSearchInfoPage(current_page, total_page) {
-
 			if (current_page < total_page) {
 				dispatch(actionCreators.changeSearchInfoPage(current_page + 1));
 			} else {
 				dispatch(actionCreators.changeSearchInfoPage(1));
 			}
+		},
+
+		/**
+		 * 退出
+		 */
+		logout() {
+			const sure = confirm('确定要退出吗？');
+			sure && dispatch(actionCreators.logout());
 		}
 	}
 }
 
-export default connect(mapState, mapDispatch)(Header);
+export default connect(mapStatus, mapDispatch)(Header);

@@ -6,13 +6,14 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducer';
-import ReduxThunk from 'redux-thunk'
+import ReduxThunk from 'redux-thunk';
+import logger  from 'redux-logger'
 
 // 合并中间件和调用 redux 控制台调试
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(
-	applyMiddleware(ReduxThunk)
+	applyMiddleware(ReduxThunk, logger)
 ));
 
 export default store;

@@ -54,6 +54,10 @@ export const GlobalStyle = createGlobalStyle`
 	*, :after, :before {
 		box-sizing: border-box;
 	}
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 	input {
 		outline: none;
 		border: none;

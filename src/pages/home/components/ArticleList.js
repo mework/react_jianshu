@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getIn } from 'immutable';
 import { actionCreators } from '../store';
+import { Link } from 'react-router-dom';
 
 import {
 	ArticleWrapper,
@@ -21,9 +22,15 @@ const ArticleList = (props) => {
 			{
 				article_list.map((item, index) => (
 					<ArticleItem key={index}>
-						<img className="article-img" alt="" src={item.get('img_url')} />
+						<Link to={`/detail/${item.get('id')}`}>
+							<img className="article-img" alt="" src={item.get('img_url')} />
+						</Link>
+
 						<div className="article-content">
-							<ArticleTitle>{item.get('title')}</ArticleTitle>
+							<Link to={`/detail/${item.get('id')}`}>
+								<ArticleTitle>{item.get('title')}</ArticleTitle>
+							</Link>
+
 							<ArticleSpec>{item.get('spec')}</ArticleSpec>
 							<ArticleInfo>
 								<ArticleInfoItem className="score">
@@ -56,9 +63,9 @@ const ArticleList = (props) => {
 	);
 }
 
-const mapState = (state) => ({
-	article_list: getIn(state, ['home', 'article_list']),
-	article_page: getIn(state, ['home', 'article_page']),
+const mapStatus = (status) => ({
+	article_list: getIn(status, ['home', 'article_list']),
+	article_page: getIn(status, ['home', 'article_page']),
 })
 
 const mapDispatch = (dispatch) => ({
@@ -67,4 +74,4 @@ const mapDispatch = (dispatch) => ({
 	}
 })
 
-export default connect(mapState, mapDispatch)(ArticleList);
+export default connect(mapStatus, mapDispatch)(ArticleList);
